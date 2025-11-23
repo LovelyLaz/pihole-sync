@@ -7,6 +7,13 @@ set -e
 
 # Configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+
+# Load .env file if it exists
+if [ -f "$REPO_DIR/.env" ]; then
+    source "$REPO_DIR/.env"
+fi
+
 PIHOLE_CONTAINER="${PIHOLE_CONTAINER:-pihole}"
 CHECK_INTERVAL="${CHECK_INTERVAL:-300}" # Check every 5 minutes by default
 STATE_FILE="/tmp/pihole-sync-state-$(echo $PIHOLE_CONTAINER | tr '/' '_')"

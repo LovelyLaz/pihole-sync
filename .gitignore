@@ -4,6 +4,7 @@ backup/
 # State files
 *.tmp
 .sync-state
+.env
 
 # Logs
 *.log

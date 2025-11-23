@@ -12,6 +12,11 @@ CONFIG_DIR="$REPO_DIR/config"
 BACKUP_DIR="$REPO_DIR/backup"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
+# Load .env file if it exists
+if [ -f "$REPO_DIR/.env" ]; then
+    source "$REPO_DIR/.env"
+fi
+
 # Docker container name (customize this)
 PIHOLE_CONTAINER="${PIHOLE_CONTAINER:-pihole}"
 

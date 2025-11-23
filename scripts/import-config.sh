@@ -10,6 +10,11 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 CONFIG_DIR="$REPO_DIR/config"
 
+# Load .env file if it exists
+if [ -f "$REPO_DIR/.env" ]; then
+    source "$REPO_DIR/.env"
+fi
+
 # Docker container name (customize this)
 PIHOLE_CONTAINER="${PIHOLE_CONTAINER:-pihole}"
 
