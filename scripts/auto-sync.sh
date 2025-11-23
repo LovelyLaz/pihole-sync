@@ -16,7 +16,7 @@ fi
 
 PIHOLE_CONTAINER="${PIHOLE_CONTAINER:-pihole}"
 CHECK_INTERVAL="${CHECK_INTERVAL:-300}" # Check every 5 minutes by default
-STATE_FILE="/tmp/pihole-sync-state-$(echo $PIHOLE_CONTAINER | tr '/' '_')"
+STATE_FILE="$REPO_DIR/.sync-state"
 
 # Colors for output
 GREEN='\033[0;32m'
