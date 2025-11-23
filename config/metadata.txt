@@ -1,0 +1,4 @@
+Export Date: Sun Nov 23 09:19:36 AM UTC 2025
+Pi-hole Container: k8s_pihole_pihole-kdjmt_pihole_db47f355-0f5c-4c05-b926-938c0a5cfd18_1
+Hostname: kube-a1502
+Pi-hole Version: Unknown
