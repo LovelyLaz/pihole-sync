@@ -1,0 +1,47 @@
+version: "3"
+
+# Example Docker Compose file for Pi-hole
+# Copy this to docker-compose.yml and customize for your setup
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+    environment:
+      TZ: 'America/New_York'
+      WEBPASSWORD: 'your-secure-password-here'
+      # Optional: Set DNS servers
+      PIHOLE_DNS_: '8.8.8.8;8.8.4.4'
+      # Optional: Set hostname
+      VIRTUAL_HOST: 'pihole.local'
+    volumes:
+      # Pi-hole config directory
+      - './pihole/etc-pihole:/etc/pihole'
+      # DNSMasq config directory
+      - './pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+
+# For multiple Pi-hole instances, you can add a secondary:
+#
+#   pihole-secondary:
+#     container_name: pihole-secondary
+#     image: pihole/pihole:latest
+#     ports:
+#       - "54:53/tcp"
+#       - "54:53/udp"
+#       - "8080:80/tcp"
+#     environment:
+#       TZ: 'America/New_York'
+#       WEBPASSWORD: 'your-secure-password-here'
+#     volumes:
+#       - './pihole-secondary/etc-pihole:/etc/pihole'
+#       - './pihole-secondary/etc-dnsmasq.d:/etc/dnsmasq.d'
+#     cap_add:
+#       - NET_ADMIN
+#     restart: unless-stopped
